@@ -25,7 +25,7 @@ EMAILOCTOPUS_LIST_ID = os.getenv("EMAILOCTOPUS_LIST_ID")
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-q^g2gnop)zni+__@t+ak9y&_-3g_e7g--t)!5th^z)#*&%d6$d"
+SECRET_KEY = os.getenv("DJANGO_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("PROD") != "True"
@@ -38,6 +38,14 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # Application definition
+
+ALLOWED_HOSTS = [
+    'wexley-backend.onrender.com',
+    'www.wexleyandthorne.com',
+    'wexleyandthorne.com',
+    'localhost:8000',
+    '127.0.0.1:8000'
+]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
