@@ -15,6 +15,7 @@ from django.core.management import call_command
 def run_migrations(request):
     call_command('makemigrations', interactive=False)
     call_command('migrate', interactive=False)
+    call_command('collectstatic', interactive=False)
     return HttpResponse("Migrations complete.")
 
 
