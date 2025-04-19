@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('main.urls')),
     path('api/subscribe/', subscribe_email, name='subscribe_email'),
-    path("run-migrations128914232923423324/", views.run_migrations)
+    path("run-migrations128914232923423324/", run_migrations)
 ]
 
 if settings.DEBUG:
