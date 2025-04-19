@@ -41,8 +41,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 ALLOWED_HOSTS = [
     'wexley-backend.onrender.com',
-    'www.wexleyandthorne.com',
-    'wexleyandthorne.com',
+    'api.wexleyandthorne.com',
     'localhost:8000',
     '127.0.0.1:8000'
 ]
