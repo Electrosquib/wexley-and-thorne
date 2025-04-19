@@ -18,13 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from main.views import subscribe_email
+from main.views import subscribe_email, run_migrations
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('main.urls')),
     path('api/subscribe/', subscribe_email, name='subscribe_email'),
+    path("run-migrations128914232923423324/", views.run_migrations)
 ]
 
 if settings.DEBUG:

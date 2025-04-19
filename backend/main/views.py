@@ -9,6 +9,13 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 import requests
 from django.http import JsonResponse
+from django.http import HttpResponse
+from django.core.management import call_command
+
+def run_migrations(request):
+    call_command('makemigrations', interactive=False)
+    call_command('migrate', interactive=False)
+    return HttpResponse("Migrations complete.")
 
 
 class BookViewSet(viewsets.ModelViewSet):
