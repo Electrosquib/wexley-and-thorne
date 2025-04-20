@@ -12,23 +12,6 @@ from django.http import JsonResponse
 from django.http import HttpResponse
 from django.core.management import call_command
 
-def run_migrations(request):
-    call_command('makemigrations', interactive=False)
-    call_command('migrate', interactive=False)
-    return HttpResponse("Migrations complete.")
-
-def run_collectstatic(request):
-    call_command('collectstatic', interactive=False)
-    return HttpResponse("Collectstatic complete.")
-
-def create_superuser_view(request):
-    User = get_user_model()
-    if not User.objects.filter(username='LeviF').exists():
-        User.objects.create_superuser('LeviF', 'electrosquib@gmail.com', 'Anaklusmos@12')
-        return HttpResponse("Superuser created.")
-    else:
-        return HttpResponse("Superuser already exists.")
-
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
@@ -36,8 +19,6 @@ class BookViewSet(viewsets.ModelViewSet):
 class AuthorViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Author.objects.prefetch_related('books').all()
     serializer_class = AuthorSerializer
-
-
 
 @csrf_exempt
 def subscribe_email(request):

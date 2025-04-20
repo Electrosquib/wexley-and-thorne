@@ -25,9 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('main.urls')),
     path('api/subscribe/', subscribe_email, name='subscribe_email'),
-    path("run-migrations128914232923423324/", run_migrations),
-    path("collectstatic342n2389s/", run_collectstatic),
-    path('create-superuserkbkdhvb4o8u23409/', create_superuser_view),
 ]
 
 if settings.DEBUG:
