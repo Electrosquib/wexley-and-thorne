@@ -30,7 +30,7 @@ function Home() {
   
   
   useEffect(() => {
-    axios.get('/api/authors/')
+    axios.get('https://api.wexleyandthorne.com/api/authors/')
       .then(response => {
         setAuthors(response.data.slice(0, 3));
       })
@@ -63,7 +63,7 @@ function Home() {
   }, [fadeOut]);
 
   useEffect(() => {
-    axios.get('/api/books/')
+    axios.get('https://api.wexleyandthorne.com/api/books/')
       .then(response => {
         const sortedBooks = response.data.sort((a, b) => b.rating - a.rating).slice(0, 8);
         setBooks(sortedBooks);
