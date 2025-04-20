@@ -27,8 +27,6 @@ EMAILOCTOPUS_LIST_ID = os.getenv("EMAILOCTOPUS_LIST_ID")
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("DJANGO_KEY")
 
-print(SECRET_KEY)
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("PROD") != "True"
 
@@ -69,16 +67,28 @@ CORS_ALLOWED_ORIGINS = [
     "https://www.wexleyandthorne.com",
 ]
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+INSTALLED_APPS += ['storages']
+
+# Use S3 for media storage
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
+
+AWS_S3_REGION_NAME = 'us-east-1'  # adjust if needed
+AWS_QUERYSTRING_AUTH = False  # Makes media files publicly accessible
 
 ROOT_URLCONF = "backend.urls"
 
