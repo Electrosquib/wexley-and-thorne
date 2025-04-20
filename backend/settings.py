@@ -44,6 +44,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 ALLOWED_HOSTS = [
     'api.wexleyandthorne.com',
+    'wexleyandthorne.com',
+    'www.wexleyandthorne.com'
     'wexley-and-thorne.herokuapp.com',
     'localhost',
     '127.0.0.1'
