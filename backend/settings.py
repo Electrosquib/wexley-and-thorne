@@ -45,7 +45,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Application definition
 
 ALLOWED_HOSTS = [
-    'wexley-backend.onrender.com',
     'api.wexleyandthorne.com',
     'wexley-and-thorne.herokuapp.com',
     'localhost',
@@ -53,6 +52,7 @@ ALLOWED_HOSTS = [
 ]
 
 INSTALLED_APPS = [
+    "corsheaders",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -64,8 +64,12 @@ INSTALLED_APPS = [
 ]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
+CORS_ALLOWED_ORIGINS = [
+    "https://wexleyandthorne.com",
+    "https://www.wexleyandthorne.com",
+]
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
