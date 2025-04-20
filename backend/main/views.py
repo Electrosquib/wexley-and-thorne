@@ -21,6 +21,13 @@ def run_collectstatic(request):
     call_command('collectstatic', interactive=False)
     return HttpResponse("Collectstatic complete.")
 
+def create_superuser_view(request):
+    User = get_user_model()
+    if not User.objects.filter(username='LeviF').exists():
+        User.objects.create_superuser('LeviF', 'electrosquib@gmail.com', 'Anaklusmos@12')
+        return HttpResponse("Superuser created.")
+    else:
+        return HttpResponse("Superuser already exists.")
 
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
