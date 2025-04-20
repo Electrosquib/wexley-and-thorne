@@ -10,6 +10,7 @@ class Author(models.Model):
 
 class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='books')
+    ebook = models.FileField(upload_to='documents/pdfs/')
     title = models.CharField(max_length=200)
     cover = models.ImageField(upload_to='books/', blank=True)
     rating = models.DecimalField(max_digits=3, decimal_places=1)

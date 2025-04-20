@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import '../Home.css';
 import '../App.css';
+
 
 function Home() {
   const [fadeOut, setFadeOut] = useState(false);
   const [books, setBooks] = useState([]);
   const [authors, setAuthors] = useState([]);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,9 +23,9 @@ function Home() {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          
+          navigate("/thank-you");
         } else {
-          alert('Something went wrong.');
+          alert('Something went wrong!');
         }
       });
   };
@@ -117,7 +119,7 @@ function Home() {
           We believe in good editing, good design, and the long arc of a well-told story.
           </p>
         </div>
-        <img src="img/typewriter.png"></img>
+        <img src="img/typewriter.png" alt="a man at a typewriter."></img>
       </div>
       <div id="popular-books" className="next-section">
         <h2>Popular Books</h2>
@@ -125,7 +127,7 @@ function Home() {
           {
             books.map(book => (
               <NavLink to={book.url} target="_blank" className="book" key={book.id}>
-                <img src={book.cover}></img>
+                <img src={book.cover} alt='book cover'></img>
                 <div>
                   <h3>{book.title}</h3>
                   <p className="rating">
