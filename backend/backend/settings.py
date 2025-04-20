@@ -34,16 +34,19 @@ ALLOWED_HOSTS = []
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Application definition
 
 ALLOWED_HOSTS = [
     'wexley-backend.onrender.com',
     'api.wexleyandthorne.com',
-    'localhost:8000',
-    '127.0.0.1:8000'
+    'localhost',
+    '127.0.0.1'
 ]
 
 INSTALLED_APPS = [
@@ -57,7 +60,10 @@ INSTALLED_APPS = [
     "main"
 ]
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 MIDDLEWARE = [
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
