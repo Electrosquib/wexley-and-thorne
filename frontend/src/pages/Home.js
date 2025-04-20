@@ -13,7 +13,7 @@ function Home() {
     e.preventDefault();
     const email = e.target.email.value;
   
-    fetch('/api/subscribe/', {
+    fetch('https://api.wexleyandthorne.com/api/subscribe/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),

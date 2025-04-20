@@ -9,7 +9,7 @@ function Authors() {
   const [selectedAuthor, setSelectedAuthor] = useState(null);
 
   useEffect(() => {
-    axios.get('/api/authors/')
+    axios.get('https://api.wexleyandthorne.com/api/authors/')
       .then(response => {
         setAuthors(response.data);
         setSelectedAuthor(response.data[0]);
@@ -18,7 +18,7 @@ function Authors() {
   }, []);
 
   const handleAuthorClick = (authorId) => {
-    axios.get(`/api/authors/${authorId}/`)
+    axios.get(`https://api.wexleyandthorne.com/api/authors/${authorId}/`)
       .then(response => setSelectedAuthor(response.data))
       .catch(error => console.log(error));
   };

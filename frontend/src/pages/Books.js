@@ -9,7 +9,7 @@ function Books() {
   const [sortOption, setSortOption] = useState('rating');
 
   useEffect(() => {
-    axios.get('/api/books/')
+    axios.get('https://api.wexleyandthorne.com/api/books/')
       .then(response => {
         setBooks(response.data);
         setFilteredBooks(response.data);
