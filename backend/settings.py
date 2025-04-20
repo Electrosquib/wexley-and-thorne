@@ -27,6 +27,8 @@ EMAILOCTOPUS_LIST_ID = os.getenv("EMAILOCTOPUS_LIST_ID")
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("DJANGO_KEY")
 
+print(SECRET_KEY)
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("PROD") != "True"
 
