@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from main.views import subscribe_email, run_migrations, run_collectstatic, create_superuser_view
+from main.views import subscribe_email
 
 
 urlpatterns = [
